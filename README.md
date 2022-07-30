@@ -6,3 +6,4 @@
 
 - Validation support using FluentValidation
 - Authentication using JWT
+- Swagger Open API 
