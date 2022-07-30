@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
+namespace AspNetCoreWebMinimalApi;
+
 public class CustomAuthorizeData : IAuthorizeData
 {
     public string? Policy { get; set; }

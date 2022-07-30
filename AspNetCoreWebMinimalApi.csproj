@@ -7,11 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Extensions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="FluentValidation" Version="11.1.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
     </ItemGroup>
