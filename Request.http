@@ -1,0 +1,22 @@
+# Admin login
+POST https://localhost:7008/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "aabc123"
+}
+
+###
+
+# Admin Secret
+
+GET https://localhost:7008/admin/secret
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIm5iZiI6MTY1OTE0ODYyMCwiZXhwIjoxNjU5MjM1MDIwLCJpc3MiOiJodHRwczovL3Rlc3QtbWluaW1hbC1hcGkubG9jYWwvIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LW1pbmltYWwtYXBpLmxvY2FsLyJ9.zs_Bv4azxaj42SFgFNoANb_JwaH8BApc5P6-jpo2fWw
+
+###
+
+# User Secret
+
+GET https://localhost:7008/user/secret
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIm5iZiI6MTY1OTE0ODYyMCwiZXhwIjoxNjU5MjM1MDIwLCJpc3MiOiJodHRwczovL3Rlc3QtbWluaW1hbC1hcGkubG9jYWwvIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LW1pbmltYWwtYXBpLmxvY2FsLyJ9.zs_Bv4azxaj42SFgFNoANb_JwaH8BApc5P6-jpo2fWw
