@@ -132,7 +132,7 @@ app.MapGet("/admin/secret",
             return Results.Ok("Shsss! 🤫 this is form admin");
         }
     )
-    .RequireAuthorization(new CustomAuthorizeData(AppConstants.Role.Admin))
+    .RequireAuthorization(new CustomAuth(AppConstants.Role.Admin))
     ;
 
 app.MapGet("/user/secret",
@@ -142,7 +142,7 @@ app.MapGet("/user/secret",
             return Results.Ok("Hello from user secret!");
         }
     )
-    .RequireAuthorization(new CustomAuthorizeData(new[] { AppConstants.Role.User, AppConstants.Role.Admin }))
+    .RequireAuthorization(new CustomAuth(new[] { AppConstants.Role.User, AppConstants.Role.Admin }))
     ;
 
 #endregion

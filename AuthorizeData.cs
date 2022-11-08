@@ -2,18 +2,18 @@
 
 namespace AspNetCoreWebMinimalApi;
 
-public class CustomAuthorizeData : IAuthorizeData
+public class CustomAuth: IAuthorizeData
 {
     public string? Policy { get; set; }
     public string? Roles { get; set; }
     public string? AuthenticationSchemes { get; set; }
 
-    public CustomAuthorizeData(string[] roles)
+    public CustomAuth(string[] roles)
     {
         Roles = string.Join(',', roles);
     }
 
-    public CustomAuthorizeData(string roles)
+    public CustomAuth(string roles)
     {
         Roles = roles;
     }
