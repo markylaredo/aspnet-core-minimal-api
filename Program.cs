@@ -74,6 +74,7 @@ builder.Services.AddAuthorization(options => { });
 
 var app = builder.Build();
 
+await app.ApplySqlLiteMigrations();
 
 if (app.Environment.IsDevelopment())
 {
