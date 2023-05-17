@@ -3,7 +3,7 @@ name: Deploy to Hosting Site
 on:
   push:
     branches:
-      - master # Change this to the branch you want to trigger deployment from
+      - master # Change this to the branch you want to trigger deployment
 
 jobs:
   deploy:
