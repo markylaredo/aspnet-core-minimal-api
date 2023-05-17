@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.x # Change this to the version of .NET Core you're using
+          dotnet-version: 7.x # Change this to the version of .NET Core you're using
 
       - name: Build and publish
         run: dotnet publish -c Release --output ${{ github.workspace }}/publish
