@@ -1,0 +1,31 @@
+name: Deploy to Hosting Site
+
+on:
+  push:
+    branches:
+      - main # Change this to the branch you want to trigger deployment from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.x # Change this to the version of .NET Core you're using
+
+      - name: Build and publish
+        run: dotnet publish -c Release --output ${{ github.workspace }}/publish
+
+      - name: FTP deployment
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          server: ${{ secrets.FTP_SERVER }} # Set the FTP server address as a secret in your repository settings
+          username: ${{ secrets.FTP_USERNAME }} # Set the FTP username as a secret in your repository settings
+          password: ${{ secrets.FTP_PASSWORD }} # Set the FTP password as a secret in your repository settings
+          server-dir: /path/to/ftp/folder # Change this to the destination directory on the FTP server
+          local-dir: ${{ github.workspace }}/publish # Path to the published output from previous step
