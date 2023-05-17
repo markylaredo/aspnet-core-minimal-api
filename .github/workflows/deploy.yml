@@ -22,7 +22,7 @@ jobs:
         run: dotnet publish -c Release --output ${{ github.workspace }}/publish
 
       - name: FTP deployment
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: minimal-api-demo.somee.com/www.minimal-api-demo.somee.com
           username: minalapis
