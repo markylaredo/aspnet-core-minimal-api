@@ -26,4 +26,4 @@ jobs:
         with:
           server: minimal-api-demo.somee.com/www.minimal-api-demo.somee.com
           username: minalapis
-          password: minalapis@2215
+          password: ${{ secrets.FTP_PASSWORD }}
