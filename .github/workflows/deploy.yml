@@ -26,9 +26,9 @@ jobs:
       - name: FTP deployment 🐱‍🏍
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: minimal-api-demo.somee.com/www.minimal-api-demo.somee.com
+          server: win8005.site4now.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ${{ github.workspace }}/publish/
-          server-dir: ./www.minimal-api-demo.somee.com/
+          server-dir: ./site1/FTP/
           timeout: 60000
