@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: staging_environment
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,6 +26,6 @@ jobs:
       - name: FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: minimal-api-demo.somee.com/www.minimal-api-demo.somee.com
-          username: minalapis
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
