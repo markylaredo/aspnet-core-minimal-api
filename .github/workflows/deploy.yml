@@ -24,8 +24,8 @@ jobs:
       - name: FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          server: ${{ secrets.FTP_SERVER }} # Set the FTP server address as a secret in your repository settings
-          username: ${{ secrets.FTP_USERNAME }} # Set the FTP username as a secret in your repository settings
-          password: ${{ secrets.FTP_PASSWORD }} # Set the FTP password as a secret in your repository settings
-          server-dir: / # Change this to the destination directory on the FTP server
-          local-dir: ${{ github.workspace }}/publish # Path to the published output from previous step
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ${{ github.workspace }}/publish
+          ftp-dir: /
