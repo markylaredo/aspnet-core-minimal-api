@@ -1,20 +1,25 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Reflection;
-using System.Security.Claims;
 using System.Text;
 using AspNetCoreWebMinimalApi;
-using AspNetCoreWebMinimalApi.Models;
-using AspNetCoreWebMinimalApi.Repositories;
+using AspNetCoreWebMinimalApi.Data;
 using AspNetCoreWebMinimalApi.Services;
-using FluentValidation;
+using Carter;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCarter();
+
+builder.Services.AddDbContext<AppDbContext>(o =>
+    o.UseSqlite($"Data Source={Path.Join(builder.Environment.ContentRootPath, "app.db")}"));
+
+builder.Services.AddScoped<StudentModule>();
+
 
 builder.Services.AddEndpointsApiExplorer();
-
+builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -22,7 +27,7 @@ builder.Services.AddSwaggerGen(options =>
         Title = "AspNet Core Web Minimal Api",
         Version = "v1",
     });
-    
+
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Scheme = "Bearer",
@@ -47,6 +52,8 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
     {
@@ -65,12 +72,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options => { });
 
-builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
-builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
 var app = builder.Build();
 
 
@@ -84,67 +85,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.MapCarter();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-#region routes endpoints
-
-app.MapPost("/auth/login", (UserLogin user, IUserService service, IValidator<UserLogin> validator) =>
-    {
-        var result = validator.Validate(user);
-        if (!result.IsValid)
-        {
-            return Results.BadRequest(result.Errors.Select(d => d.ErrorMessage));
-        }
-
-        var info = service.Get(user);
-        if (info is null) return Results.NotFound("User not found");
-
-
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, info.Username),
-            new Claim(ClaimTypes.Role, info.Role)
-        };
-
-        var token = new JwtSecurityToken
-        (
-            issuer: builder.Configuration["Jwt:Issuer"],
-            audience: builder.Configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddDays(1),
-            notBefore: DateTime.UtcNow,
-            signingCredentials: new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-                SecurityAlgorithms.HmacSha256)
-        );
-
-        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-
-        return Results.Ok(tokenString);
-    }
-);
-
-app.MapGet("/admin/secret",
-        (ICurrentUserService current) =>
-        {
-            Console.WriteLine(current.Username);
-            return Results.Ok("Shsss! 🤫 this is form admin");
-        }
-    )
-    .RequireAuthorization(new CustomAuth(AppConstants.Role.Admin))
-    ;
-
-app.MapGet("/user/secret",
-        (ICurrentUserService current) =>
-        {
-            Console.WriteLine(current.Username);
-            return Results.Ok("Hello from user secret!");
-        }
-    )
-    .RequireAuthorization(new CustomAuth(new[] { AppConstants.Role.User, AppConstants.Role.Admin }))
-    ;
-
-#endregion
 
 app.Run();
