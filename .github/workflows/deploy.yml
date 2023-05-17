@@ -1,0 +1,34 @@
+name: Deploy to Hosting Site
+
+on:
+  push:
+    branches:
+      - master #Change this to the branch you want to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging_environment
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.x # Change this to the version of .NET Core you're using
+
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build and publish
+        run: dotnet publish -c Release --output ${{ github.workspace }}/publish
+
+      - name: FTP deployment 🐱‍🏍
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: 198.37.116.25
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ${{ github.workspace }}/publish/
+          server-dir: ./www.minimal-api-demo.somee.com/
+          timeout: 60000
