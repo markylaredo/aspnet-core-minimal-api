@@ -1,6 +1,7 @@
 using System.Text;
 using AspNetCoreWebMinimalApi;
 using AspNetCoreWebMinimalApi.Data;
+using AspNetCoreWebMinimalApi.Modules;
 using AspNetCoreWebMinimalApi.Services;
 using Carter;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
