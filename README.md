@@ -28,7 +28,6 @@ This API endpoint allows you to interact with student data, including retrieving
 - POST: Include the following JSON object in the request body:
 ```json
 {
-  "id": "ac778e22-aa86-40a9-83ff-b334239cdf2e",
   "name": "Jazelle Laredo",
   "level": "4",
   "section": "A",
@@ -42,10 +41,10 @@ This API endpoint allows you to interact with student data, including retrieving
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "name": "Mark Anthony",
+  "name": "Jazelle Laredo",
   "level": "4",
-  "section": "C",
-  "academicYear": "2014-2015"
+  "section": "A",
+  "academicYear": "2013-2014"
 }
 
 ```
