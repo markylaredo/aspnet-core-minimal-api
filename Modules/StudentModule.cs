@@ -27,7 +27,7 @@ public sealed class StudentModule : ICarterModule
         return Results.Ok(doc);
     }
 
-    private static async Task<IResult> UpdateStudent(AppDbContext db, Guid id, [FromBody] Student req,
+    private static async Task<IResult> UpdateStudent(AppDbContext db, Guid id, [FromBody] StudentDto req,
         CancellationToken ct)
     {
         var student = (req with { Id = id }).Adapt<Student>();
@@ -38,7 +38,7 @@ public sealed class StudentModule : ICarterModule
     }
 
 
-    private static async Task<IResult> CreateStudent(AppDbContext db, Student req, CancellationToken ct)
+    private static async Task<IResult> CreateStudent(AppDbContext db,[FromBody] StudentDto req, CancellationToken ct)
     {
         var student = req.Adapt<Student>();
         await db.Set<Student>().AddAsync(student, ct);
