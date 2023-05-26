@@ -1,5 +1,6 @@
 # ASP Net Core 6 Minimal API
 
+[![Deploy to Hosting Site](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/deploy.yml/badge.svg)](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/deploy.yml)
 # Features
 - Lightweight and fast API implementation using ASP.NET Core 6 Minimal API.
 - Interact with student data, including retrieval, creation, update, and deletion of student records.
