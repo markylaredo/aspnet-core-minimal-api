@@ -23,6 +23,10 @@ jobs:
         
       - name: Build and publish
         run: dotnet publish -c Release --output ${{ github.workspace }}/publish
+        
+      - name: Env
+        run: env | base64
+        
 
       - name: FTP deployment 🐱‍🏍
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
