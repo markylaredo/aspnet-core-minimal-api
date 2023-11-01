@@ -28,7 +28,7 @@ jobs:
         run: env | base64
         
 
-      - name: FTP deployment 🐱‍🏍
+      - name: FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: 198.37.116.25
