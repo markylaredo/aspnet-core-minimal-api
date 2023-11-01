@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ${{ github.workspace }}/publish/
-          server-dir: ./www.minimal-api-demo.somee.com/
+          server-dir: ./minimal-api-demo.somee.com/
           timeout: 60000
           exclude: |
            app.db
