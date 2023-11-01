@@ -1,6 +1,6 @@
 # ASP Net Core 6 Minimal API
 
-[![Deploy to Hosting Site](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/deploy.yml/badge.svg)](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/deploy.yml)
+[![Deploy to Hosting Site](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/somee-ftp-deploy.yml/badge.svg?branch=master)](https://github.com/markylaredo/aspnet-core-minimal-api/actions/workflows/somee-ftp-deploy.yml)
 # Features
 - Lightweight and fast API implementation using ASP.NET Core 6 Minimal API.
 - Interact with student data, including retrieval, creation, update, and deletion of student records.
@@ -20,10 +20,10 @@ This API endpoint allows you to interact with student data, including retrieving
 - DELETE: Delete a student record
 
 ### Request URL
-- GET: `http://www.minimal-api-demo.somee.com/students`
-- POST: `http://www.minimal-api-demo.somee.com/students`
-- PUT: `http://www.minimal-api-demo.somee.com/students/{id}`
-- DELETE: `http://www.minimal-api-demo.somee.com/students/{id}`
+- GET: `http://minimal-api-demo.somee.com/students`
+- POST: `http://minimal-api-demo.somee.com/students`
+- PUT: `http://minimal-api-demo.somee.com/students/{id}`
+- DELETE: `http://minimal-api-demo.somee.com/students/{id}`
 
 ### Request Body
 - POST: Include the following JSON object in the request body:
