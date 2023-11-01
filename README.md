@@ -20,10 +20,10 @@ This API endpoint allows you to interact with student data, including retrieving
 - DELETE: Delete a student record
 
 ### Request URL
-- GET: `http://minimal-api-demo.somee.com/students`
-- POST: `http://minimal-api-demo.somee.com/students`
-- PUT: `http://minimal-api-demo.somee.com/students/{id}`
-- DELETE: `http://minimal-api-demo.somee.com/students/{id}`
+- GET: `http://www.minimal-api-demo.somee.com/students`
+- POST: `http://www.minimal-api-demo.somee.com/students`
+- PUT: `http://www.minimal-api-demo.somee.com/students/{id}`
+- DELETE: `http://www.minimal-api-demo.somee.com/students/{id}`
 
 ### Request Body
 - POST: Include the following JSON object in the request body:
