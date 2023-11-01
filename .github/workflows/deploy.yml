@@ -30,7 +30,7 @@ jobs:
       - name: FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{secrets.FTP_SERVER_ADDRESS}}
+          server: 155.254.244.39 #${{secrets.FTP_SERVER_ADDRESS}}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ${{ github.workspace }}/publish/
