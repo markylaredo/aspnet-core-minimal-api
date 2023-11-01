@@ -31,11 +31,11 @@ jobs:
       - name: FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: 155.254.244.28
+          server: ${{secrets.FTP_SERVER_ADDRESS}}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ${{ github.workspace }}/publish/
-          server-dir: ./www.minimal-api-demo.somee.com/
+          server-dir: ./www.minimal-api-profiling.somee.com/
           timeout: 60000
           exclude: |
            app.db
